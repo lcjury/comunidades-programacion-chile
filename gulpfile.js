@@ -36,7 +36,36 @@ function buildCommunities () {
     .pipe(gulp.dest("public/"));
 };
 
-gulp.task("css", function () {
+function injectCSS () {
+  const map = require("map-stream");
+  const fs = require("fs");
+
+  return gulp
+    .src("./public/index.html")
+    .pipe(
+      map(function (file, cb) {
+        const style = fs.readFileSync("public/styles.css", "utf8");
+
+        var fileContents = file.contents.toString();
+        fileContents = fileContents.replace(
+          /<link\b[^>]*data-replace="gulp-style\b[^>]*\/>$/gm,
+          `<style>${style}</style>`
+        );
+
+        file.contents = new Buffer(fileContents);
+        cb(null, file);
+      })
+    )
+    .pipe(gulp.dest("./public/"));
+}
+
+function copyImages () {
+  return gulp
+    .src(["./src/*.png", "./src/*.ico"])
+    .pipe(gulp.dest("./public"));
+}
+
+function buildCSS () {
   const postcss = require("gulp-postcss");
   const purgecss = require("gulp-purgecss");
   const clean = require("clean-css");
@@ -69,56 +98,14 @@ gulp.task("css", function () {
       })
     )
     .pipe(gulp.dest("public/"));
-});
+};
 
 gulp.task(
   "build",
   gulp.series(
     buildCommunities,
-    "css",
-    function () {
-      const map = require("map-stream");
-      const fs = require("fs");
-
-      return gulp
-        .src("./public/index.html")
-        .pipe(
-          map(function (file, cb) {
-            const style = fs.readFileSync("public/styles.css", "utf8");
-
-            var fileContents = file.contents.toString();
-            fileContents = fileContents.replace(
-              /<link\b[^>]*data-replace="gulp-style\b[^>]*\/>$/gm,
-              `<style>${style}</style>`
-            );
-
-            file.contents = new Buffer(fileContents);
-            cb(null, file);
-          })
-        )
-        .pipe(gulp.dest("./public/"));
-    },
-    function copyImages() {
-      return gulp
-        .src(["./src/*.png", "./src/*.ico"])
-        .pipe(gulp.dest("./public"));
-    }
+    buildCSS,
+    injectCSS,
+    copyImages
   )
 );
-
-gulp.task("change-text", function () {
-  return gulp
-    .src("src/css/main.sass")
-    .pipe(
-      map(function (file, cb) {
-        var fileContents = file.contents.toString();
-        // --- do any string manipulation here ---
-        fileContents = fileContents.replace(/foo/, "bar");
-        fileContents = "First line\n" + fileContents;
-        // ---------------------------------------
-        file.contents = new Buffer(fileContents);
-        cb(null, file);
-      })
-    )
-    .pipe(gulp.dest("dist"));
-});
