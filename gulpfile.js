@@ -12,6 +12,7 @@ var communityTemplate = function (community) {
             ${community.facebook ? `<a href="https://www.facebook.com/${community.facebook}" title="${community.longName} en facebook" target="_blank"><svg class="transition duration-200 hover:text-blue-600 h-6 w-6 ml-4"><use xlink:href="#facebook" /></svg></a>`: ''}
             ${community.web ? `<a href="${community.web}" title="sitio web de ${community.longName}" target="_blank"><svg class="transition duration-200 hover:text-gray-800 h-6 w-6 ml-4"><use xlink:href="#network" /></svg></a>`: ''}
             ${community.discord ? `<a href="${community.discord}" title="sitio discord de ${community.longName}" target="_blank"><svg class="transition duration-200 hover:text-indigo-400 h-6 w-6 ml-4"><use xlink:href="#discord"></use></svg></a>`: ''}
+            ${community.slack ? `<a href="${community.slack}" title="sitio slack de ${community.longName}" target="_blank"><svg class="transition duration-200 hover:text-slack h-6 w-6 ml-4"><use xlink:href="#slack"></use></svg></a>`: ''}
           </p>
         </div>
       </div>
