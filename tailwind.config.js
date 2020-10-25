@@ -5,8 +5,12 @@ module.exports = {
   },
   purge: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        slack: '#4A154B'
+      }
+    },
   },
   variants: {},
-  plugins: [],
+  plugins: []
 }

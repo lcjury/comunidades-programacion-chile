@@ -53,4 +53,16 @@
   "longName": "GDG Santiago Chile",
   "name": "GDG Santiago Chile",
   "facebook": "gdgsantiagochile"
+}, {
+  "logo": "https://avatars2.githubusercontent.com/u/17724906?s=200&v=4",
+  "longName": "devsChile",
+  "name": "devsChile",
+  "twitter": "https://devschile.cl/",
+  "slack": "https://devschile.cl/"
+}, {
+  "logo": "https://pbs.twimg.com/profile_images/906925639139303429/h1DuV1vU_400x400.jpg",
+  "longName": "Programación Competitiva en Chile",
+  "name": "progcompCL",
+  "twitter": "progcompCL",
+  "web": "https://progcomp.cl/"
 }]
