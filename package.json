@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gulp-inject": "^5.0.5",
     "postcss-clean": "^1.1.0",
     "tailwindcss": "^1.8.10"
   },
