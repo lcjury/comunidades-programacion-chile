@@ -101,6 +101,16 @@ function buildCSS () {
 };
 
 gulp.task(
+  "default",
+  gulp.series(
+    buildCommunities,
+    buildCSS,
+    injectCSS,
+    copyImages
+  )
+);
+
+gulp.task(
   "build",
   gulp.series(
     buildCommunities,
