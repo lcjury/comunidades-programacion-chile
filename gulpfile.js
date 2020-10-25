@@ -109,3 +109,12 @@ gulp.task(
     copyImages
   )
 );
+
+gulp.task("dev", function () {
+  gulp.watch(["src/**/*"], gulp.series(
+    buildCommunities,
+    buildCSS,
+    injectCSS,
+    copyImages
+  ));
+});
