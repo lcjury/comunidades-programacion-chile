@@ -62,7 +62,11 @@ function injectCSS () {
 
 function copyImages () {
   return gulp
-    .src(["./src/*.png", "./src/*.ico"])
+    .src([
+        "./src/*.png",
+        "./src/*.ico",
+        "./src/logos/*",
+        ], {base: "./src/"})
     .pipe(gulp.dest("./public"));
 }
 
