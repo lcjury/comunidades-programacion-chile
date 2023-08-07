@@ -65,4 +65,12 @@
   "name": "progcompCL",
   "twitter": "progcompCL",
   "web": "https://progcomp.cl/"
-}]
+}, {
+  "name": "tech's",
+  "longName": "tech's los lagos",
+  "logo": "logos/techs_los_lagos.jpeg",
+  "web": "https://www.techs.cl/",
+  "facebook": "TechsTalksLosLagos",
+  "instagram": "techsloslagos"
+}
+]
